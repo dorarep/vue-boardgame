@@ -16,24 +16,35 @@ const initialState = {
 
 export const state = () => JSON.parse(JSON.stringify(initialState))
 
+const isOpen = (state, x, y) => {
+  return y < BOARD_Y && y >= 0 &&
+    x < BOARD_X && x >= 0 &&
+    !state.board[y][x] &&
+    !(x === state.player.x && y === state.player.y) &&
+    !(x === state.enemy.x && y === state.enemy.y)
+}
+
 const getMovable = (state, target) => {
   const x = state[target].x
   const y = state[target].y
   const movable = []
 
-  if (y + 1 < BOARD_Y && state.board[y + 1][x] === 0) { movable.push([ 1,  0]) }
-  if (y - 1 >= 0      && state.board[y - 1][x] === 0) { movable.push([-1,  0]) }
-  if (x + 1 < BOARD_X && state.board[y][x + 1] === 0) { movable.push([ 0,  1]) }
-  if (x - 1 >= 0      && state.board[y][x - 1] === 0) { movable.push([ 0, -1]) }
-  if (y + 1 < BOARD_Y && x + 1 < BOARD_X && state.board[y + 1][x + 1] === 0) { movable.push([ 1,  1]) }
-  if (y - 1 >= 0      && x - 1 >= 0      && state.board[y - 1][x - 1] === 0) { movable.push([-1, -1]) }
-  if (y - 1 >= 0      && x + 1 < BOARD_Y && state.board[y - 1][x + 1] === 0) { movable.push([-1,  1]) }
-  if (y + 1 < BOARD_Y && x - 1 >= 0      && state.board[y + 1][x - 1] === 0) { movable.push([ 1, -1]) }
+  if (isOpen(state, x, y + 1)) { movable.push([ 1,  0]) }
+  if (isOpen(state, x, y - 1)) { movable.push([-1,  0]) }
+  if (isOpen(state, x + 1, y)) { movable.push([ 0,  1]) }
+  if (isOpen(state, x - 1, y )) { movable.push([ 0, -1]) }
+  if (isOpen(state, x + 1, y + 1)) { movable.push([ 1,  1]) }
+  if (isOpen(state, x - 1, y - 1)) { movable.push([-1, -1]) }
+  if (isOpen(state, x + 1, y - 1)) { movable.push([-1,  1]) }
+  if (isOpen(state, x - 1, y + 1)) { movable.push([ 1, -1]) }
 
   return movable
 }
 
 export const mutations = {
+  resetGame (state) {
+    Object.assign(state, JSON.parse(JSON.stringify(initialState)))
+  },
   setWall (state, { x, y }) {
     state['board'][y][x] = 1
   },
@@ -59,7 +70,15 @@ export const mutations = {
 }
 
 export const actions = {
-  onClick ({ commit }, { x, y }) {
+  onClick ({ state, commit }, { x, y }) {
+    if (state.loser !== null) {
+      commit('resetGame')
+      return
+    }
+    if (!isOpen(state, x, y)) {
+      return
+    }
+
     commit('setWall', { x, y })
     commit('setWallRandomly')
     commit('moveRandomly', 'player')

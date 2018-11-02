@@ -2,8 +2,8 @@
   transition-group(name="list-complete" tag="div")
     .tr(v-for="(row, y) in $store.state.game.board" :key="y")
       cell.td(v-for="(cell, x) in row" @click.native="$store.dispatch('game/onClick', {x, y})" :key="x")
-        player(key="p" v-if="$store.state.game.player.x === x && $store.state.game.player.y === y && $store.state.game.loser !== 'player'")
-        enemy(key="e" v-if="$store.state.game.enemy.x === x && $store.state.game.enemy.y === y && $store.state.game.loser !== 'enemy'")
+        player(key="p" v-if="$store.state.game.player.x === x && $store.state.game.player.y === y")
+        enemy(key="e" v-if="$store.state.game.enemy.x === x && $store.state.game.enemy.y === y")
         wall(v-if="cell == 1")
 </template>
 
