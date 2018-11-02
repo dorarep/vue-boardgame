@@ -1,3 +1,6 @@
+import dieWav from '~/assets/wav/die.wav';
+import setWav from '~/assets/wav/set.wav';
+
 const BOARD_X = 11
 const BOARD_Y = 11
 
@@ -60,6 +63,9 @@ export const mutations = {
   moveRandomly (state, target) {
     const movable = getMovable(state, target)
     if (movable.length === 0) {
+      const audio = new Audio(dieWav);
+      audio.play();
+
       return state.loser = target
     }
     const move = movable[Math.floor(Math.random() * movable.length)]
@@ -68,6 +74,7 @@ export const mutations = {
     state[target].x += move[1]
   }
 }
+
 
 export const actions = {
   onClick ({ state, commit }, { x, y }) {
@@ -78,6 +85,8 @@ export const actions = {
     if (!isOpen(state, x, y)) {
       return
     }
+    const audio = new Audio(setWav);
+    audio.play();
 
     commit('setWall', { x, y })
     commit('setWallRandomly')

@@ -1,20 +1,17 @@
 <template lang="pug">
   section#container
-    system-frame
-      game-board
+    game-frame
     system-frame(v-if="$store.state.game.loser !== null")
       p(v-if="$store.state.game.loser === 'enemy'") プレイヤーの勝ち！
       p(v-else) エネミーの勝ち！
 </template>
 
 <script>
-  import SystemFrame from '~/components/atoms/SystemFrame.vue'
-  import GameBoard from '~/components/molecules/GameBoard.vue'
+  import GameFrame from '~/components/organisms/GameFrame.vue'
 
   export default {
     components: {
-      SystemFrame,
-      GameBoard
+      GameFrame
     }
   }
 </script>

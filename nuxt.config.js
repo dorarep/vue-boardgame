@@ -24,10 +24,20 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    loaders: [ {
+      test: /\.(ogg|mp3|wav|mpe?g)$/i,
+      use: 'file-loader'
+    }, ],
     /*
     ** Run ESLint on save
     */
     extend (config, { isDev, isClient }) {
+      config.module.rules.push({
+        test: /\.(ogg|mp3|wav|mpe?g)$/i,
+        use: 'file-loader',
+        exclude: /(node_modules)/
+      });
+
       if (isDev && isClient) {
         config.module.rules.push({
           enforce: 'pre',
