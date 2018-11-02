@@ -21,3 +21,6 @@ $ npm run generate
 
 For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
 
+## 素材提供
+### 画像
+[TEDDY-PLAZA](http://teddy-plaza.sakura.ne.jp/)
