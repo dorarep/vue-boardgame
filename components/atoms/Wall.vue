@@ -1,6 +1,5 @@
 <template lang="pug">
   transition(
-    name="custom-classes-transition"
     enter-active-class="animated bounceInDown"
   )
     img(src="~/assets/barrel.png").fix
