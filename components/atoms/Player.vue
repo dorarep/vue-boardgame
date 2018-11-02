@@ -4,7 +4,7 @@
 
 <style scoped>
   .fix {
-    width: 100%;
-    height: 100%;
+    width: 20px;
+    height: 20px;
   }
 </style>

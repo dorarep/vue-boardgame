@@ -1,7 +1,7 @@
 <template lang="pug">
   div
-    .tr(v-for="(row, y) in $store.state.game.board")
-      cell.td(v-for="(cell, x) in row" @click.native="$store.dispatch('game/onClick', {x, y})")
+    .tr(v-for="(row, y) in $store.state.game.board" :key="y")
+      cell.td(v-for="(cell, x) in row" @click.native="$store.dispatch('game/onClick', {x, y})" :key="x")
         player(v-if="$store.state.game.player.x === x && $store.state.game.player.y === y")
         enemy(v-if="$store.state.game.enemy.x === x && $store.state.game.enemy.y === y")
         wall(v-if="cell == 1")
