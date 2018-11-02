@@ -5,7 +5,7 @@
 
 <style scoped>
   .cell{
-    background: #668ad8;
+    background-image: url('~assets/grass.png');
     height: 32px;
     width: 32px;
 

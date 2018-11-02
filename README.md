@@ -1,26 +1,25 @@
 # boardgame
 
-> Vue.js Boardgame Example
+Vue.js Boardgame Example
 
 ## Build Setup
 
 ``` bash
-# install dependencies
-$ npm install # Or yarn install
+$ yarn install
 
 # serve with hot reload at localhost:3000
-$ npm run dev
+$ yarn run dev
 
 # build for production and launch server
-$ npm run build
-$ npm start
+$ yarn run build
+$ yarn start
 
 # generate static project
-$ npm run generate
+$ yarn run generate
 ```
 
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
-
-## 素材提供
+## 素材提供元
 ### 画像
-[TEDDY-PLAZA](http://teddy-plaza.sakura.ne.jp/)
+- [TEDDY-PLAZA様](http://teddy-plaza.sakura.ne.jp/)
+- [ぴぽや様](http://blog.pipoya.net/)
+- [ぴよたそ様](https://hiyokoyarou.com/about/)
