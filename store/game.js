@@ -1,6 +1,3 @@
-import dieWav from '~/assets/wav/die.wav';
-import setWav from '~/assets/wav/set.wav';
-
 const BOARD_X = 11
 const BOARD_Y = 11
 
@@ -63,9 +60,6 @@ export const mutations = {
   moveRandomly (state, target) {
     const movable = getMovable(state, target)
     if (movable.length === 0) {
-      const audio = new Audio(dieWav);
-      audio.play();
-
       return state.loser = target
     }
     const move = movable[Math.floor(Math.random() * movable.length)]
@@ -85,12 +79,16 @@ export const actions = {
     if (!isOpen(state, x, y)) {
       return
     }
-    const audio = new Audio(setWav);
-    audio.play();
+    commit('audio/playSound', 'set', {root: true})
+    commit('audio/playBgm', '2bfree', {root: true})
 
     commit('setWall', { x, y })
     commit('setWallRandomly')
     commit('moveRandomly', 'player')
     commit('moveRandomly', 'enemy')
+
+    if (state.loser !== null) {
+      commit('audio/playSound', 'die', {root: true})
+    }
   }
 }
