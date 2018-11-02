@@ -39,6 +39,8 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-image: url('~assets/background.png');
+  background-size: cover;
 }
 
 .title {
