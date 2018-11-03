@@ -31,7 +31,16 @@ export const mutations = {
       audioMap[name] = new Audio(sounds[name])
       audioMap[name].loop = true
     }
+    audioMap[name].currentTime = 0
     audioMap[name].play()
+
     state.bgm = name
+  },
+  stopBgm (state) {
+    if (!state.bgm) {
+      return
+    }
+    audioMap[state.bgm].pause()
+    state.bgm = null
   }
 }

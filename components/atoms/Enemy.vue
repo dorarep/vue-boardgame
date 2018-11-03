@@ -1,6 +1,17 @@
 <template lang="pug">
-  img(src="~/assets/enemy.gif").fix
+  smoothly-movable(uuid="enemy")
+    img(src="~/assets/enemy.gif").fix
 </template>
+
+<script>
+  import SmoothlyMovable from '~/components/atoms/SmoothlyMovable.vue'
+
+  export default {
+    components: {
+      SmoothlyMovable
+    }
+  }
+</script>
 
 <style scoped>
   .fix {

@@ -89,6 +89,7 @@ export const actions = {
 
     if (state.loser !== null) {
       commit('audio/playSound', 'die', {root: true})
+      commit('audio/stopBgm', '2bfree', {root: true})
     }
   }
 }
