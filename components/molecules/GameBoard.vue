@@ -1,5 +1,5 @@
 <template lang="pug">
-  transition-group(name="list-complete" tag="div")
+  div
     .tr(v-for="(row, y) in $store.state.game.board" :key="y")
       cell.td(v-for="(cell, x) in row" @click.native="$store.dispatch('game/onClick', {x, y})" :key="x")
         player(v-if="$store.state.game.player.x === x && $store.state.game.player.y === y")
