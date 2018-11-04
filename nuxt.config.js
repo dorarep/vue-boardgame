@@ -1,3 +1,9 @@
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+  router: {
+    base: '/vue-boardgame/'
+  }
+} : {}
+
 module.exports = {
   /*
   ** Headers of the page
@@ -47,6 +53,7 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  ...routerBase
 }
 
