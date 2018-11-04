@@ -1,9 +1,6 @@
 <template lang="pug">
   section#container
     game-frame
-    system-frame(v-if="$store.state.game.loser !== null")
-      p(v-if="$store.state.game.loser === 'enemy'") プレイヤーの勝ち！
-      p(v-else) エネミーの勝ち！
 </template>
 
 <script>
