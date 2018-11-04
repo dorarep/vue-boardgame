@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Vue.js Boardgame Example",
   "author": "dorarep <ishikami.naotaka@gmail.com>",
+  "license": "UNLICENSED",
   "private": true,
   "scripts": {
     "dev": "nuxt",
