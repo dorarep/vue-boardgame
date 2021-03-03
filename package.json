@@ -16,7 +16,7 @@
   "dependencies": {
     "animate.css": "^3.7.0",
     "nuxt": "^2.0.0",
-    "pug": "^2.0.3",
+    "pug": "^3.0.1",
     "pug-plain-loader": "^1.0.0"
   },
   "devDependencies": {
